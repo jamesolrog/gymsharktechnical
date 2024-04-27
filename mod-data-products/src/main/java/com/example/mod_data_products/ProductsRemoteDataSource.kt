@@ -10,12 +10,26 @@ data class ProductsApiResponse(
 )
 
 enum class Size {
-    @SerializedName("xs") XS,
-    @SerializedName("s") S,
-    @SerializedName("m") M,
-    @SerializedName("l") L,
-    @SerializedName("xl") XL,
-    @SerializedName("xxl") XXL
+    @SerializedName("xs")
+    XS,
+    @SerializedName("s")
+    S,
+    @SerializedName("m")
+    M,
+    @SerializedName("l")
+    L,
+    @SerializedName("xl")
+    XL,
+    @SerializedName("xxl")
+    XXL,
+}
+
+
+enum class ProductLabel {
+    @SerializedName("new") NEW,
+    @SerializedName("going-fast") GOING_FAST,
+    @SerializedName("popular") POPULAR,
+    @SerializedName("limited-edition") LIMITED_EDITION,
 }
 
 enum class Gender {
@@ -35,13 +49,13 @@ data class Product(
     val type: String,
     val gender: List<Gender>,
     val fit: String?,
-    val labels: List<String>,
+    val labels: List<ProductLabel>?,
     val colour: String,
     val price: Int,
     val compareAtPrice: Int?,
     val discountPercentage: Int?,
     val featuredMedia: Media,
-    val media: List<Media>,
+    val media: List<Media> = emptyList(),
     val objectID: String,
 )
 

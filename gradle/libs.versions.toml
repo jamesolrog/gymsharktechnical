@@ -10,7 +10,6 @@ lifecycleRuntimeKtx = "2.7.0"
 # UI
 composeBom = "2024.04.01"
 compose-compiler-version = "1.5.12"
-material = "1.11.0"
 
 # Navigation
 navigation-compose = "2.7.7"
@@ -19,7 +18,7 @@ navigation-compose = "2.7.7"
 activityCompose = "1.9.0"
 
 # Images
-coil-bom = "2.5.0"
+coil-bom = "2.6.0"
 
 # Networking (Retrofit)
 retrofit = "2.9.0"
@@ -63,8 +62,8 @@ androidx-material3 = { group = "androidx.compose.material3", name = "material3" 
 androidx-compose-compiler = { group = "androidx.compose.compiler", name = "compiler", version.ref = "compose-compiler-version"}
 
 # Coil
-coil-bom = { group = "io.coil.kt", name = "coil-bom", version.ref = "coil-bom"}
-coil-compose = { group = "io.coil.kt", name = "coil-compose" }
+coil-bom = { group = "io.coil-kt", name = "coil-bom", version.ref = "coil-bom" }
+coil-compose = { group = "io.coil-kt", name = "coil-compose" }
 
 # Retrofit
 retrofit = { group = "com.squareup.retrofit2", name  = "retrofit", version.ref = "retrofit" }

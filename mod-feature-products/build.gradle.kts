@@ -51,6 +51,10 @@ dependencies {
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.bundles.compose.ui.core)
 
+    // Coil
+    implementation(platform(libs.coil.bom))
+    implementation(libs.coil.compose)
+
     // Hilt
     implementation(libs.hilt.android)
     implementation(libs.hilt.navigation.compose)

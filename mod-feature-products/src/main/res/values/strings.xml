@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="new_label">NEW</string>
+    <string name="going_fast_label">GOING FAST</string>
+    <string name="limited_edition_label">LIMITED EDITION</string>
+    <string name="popular_label">POPULAR</string>
+</resources>
