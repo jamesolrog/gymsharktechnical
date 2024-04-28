@@ -6,4 +6,7 @@ class ProductsRepository @Inject constructor(
     private val productsRemoteDataSource: ProductsRemoteDataSource
 ) {
     suspend fun getProducts() = productsRemoteDataSource.getProducts().hits
+
+    // TODO: Consider optimising using local cache?
+    suspend fun  getProduct(id: String) = getProducts().first { it.id.toString() == id }
 }

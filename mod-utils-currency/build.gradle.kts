@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.mod_feature_products"
+    namespace = "com.example.mod_utils_currency"
     compileSdk = 34
 
     defaultConfig {
@@ -26,45 +26,22 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = "17"
-    }
-    buildFeatures {
-        compose = true
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion = libs.versions.compose.compiler.version.get()
+        jvmTarget = "1.8"
     }
 }
 
 dependencies {
-    // Modules
-    implementation(project(":mod-ui-core"))
-    implementation(project(":mod-data-products"))
-    implementation(project(":mod-utils-currency"))
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
 
-    // Compose
-    implementation(platform(libs.androidx.compose.bom))
-    implementation(libs.bundles.compose.ui.core)
-
-    // Coil
-    implementation(platform(libs.coil.bom))
-    implementation(libs.coil.compose)
-
     // Hilt
     implementation(libs.hilt.android)
-    implementation(libs.hilt.navigation.compose)
-    testImplementation(project(":mod-utils-test"))
     kapt(libs.hilt.compiler)
 
-    testImplementation(libs.kotlinx.coroutines.test)
-    testImplementation(libs.mockito)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

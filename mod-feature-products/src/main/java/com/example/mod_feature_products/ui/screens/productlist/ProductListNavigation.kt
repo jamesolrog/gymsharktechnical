@@ -10,25 +10,17 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navOptions
 import androidx.navigation.navigation
 
-const val ProductGraphRoutePattern = "productsGraph"
 const val ProductListRoutePattern = "products"
 
-fun NavGraphBuilder.productsGraph(navController: NavController) {
-    navigation(
-        route = ProductGraphRoutePattern,
-        startDestination = ProductListRoutePattern,
-    ) {
-        productListScreen()
-    }
-}
-
-fun NavGraphBuilder.productListScreen() {
+fun NavGraphBuilder.productListScreen(
+    onProductClick: (productId: Long) -> Unit,
+) {
     composable(
         route = ProductListRoutePattern,
     ) {
         val viewModel: ProductListViewModel = hiltViewModel()
         val uiState by viewModel.uiState.collectAsState() // TODO LIFECYCLE
-        ProductListScreen(uiState = uiState)
+        ProductListScreen(uiState = uiState, onProductClick)
     }
 }
 
