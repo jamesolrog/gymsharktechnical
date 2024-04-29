@@ -55,7 +55,7 @@ class ProductListViewModel @Inject constructor(
                         title = it.title,
                         primaryLabel = it.labels?.firstOrNull(),
                         colour = it.colour,
-                        price = currencyFormatter.format(it.price),
+                        price = currencyFormatter.format(it.price, maximumFractionDigits = 0),
                         featuredMediaUrl = it.featuredMedia.src,
                     )
                 }

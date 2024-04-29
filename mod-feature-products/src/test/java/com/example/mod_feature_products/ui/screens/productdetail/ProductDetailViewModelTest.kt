@@ -5,7 +5,7 @@ import com.example.mod_data_products.GetProductUseCase
 import com.example.mod_data_products.models.SampleProducts
 import com.example.mod_utils_currency.CurrencyFormatter
 import com.example.mod_utils_test.MainDispatcherRule
-import kotlinx.coroutines.delay
+import kotlinx.coroutines.awaitCancellation
 import kotlinx.coroutines.test.runTest
 import org.junit.Before
 import org.junit.Rule
@@ -15,6 +15,7 @@ import org.mockito.kotlin.any
 import org.mockito.kotlin.doAnswer
 import org.mockito.kotlin.doReturn
 import org.mockito.kotlin.doSuspendableAnswer
+import org.mockito.kotlin.eq
 import org.mockito.kotlin.stub
 import org.mockito.kotlin.verifyBlocking
 
@@ -40,7 +41,7 @@ class ProductDetailViewModelTest {
             on { get<String>(any()) } doReturn FAKE_PRODUCT_ID
         }
         mockCurrencyFormatter.stub {
-            on { format(any(), any()) } doReturn FAKE_PRICE
+            on { format(eq(1000), any(), any()) } doReturn FAKE_PRICE
         }
     }
 
@@ -49,8 +50,7 @@ class ProductDetailViewModelTest {
         mockGetProductUseCase.stub {
             onBlocking { getProduct(any()) } doSuspendableAnswer {
                 // Delay the call to get products to ensure loading state has time to assert
-                delay(500)
-                SampleProducts.values.firstOrNull()
+                awaitCancellation()
             }
         }
         assert(viewModel.uiState.value == ProductDetailUiState.Loading)

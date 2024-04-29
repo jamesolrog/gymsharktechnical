@@ -4,7 +4,7 @@ import com.example.mod_data_products.GetProductsUseCase
 import com.example.mod_data_products.models.SampleProducts
 import com.example.mod_utils_currency.CurrencyFormatter
 import com.example.mod_utils_test.MainDispatcherRule
-import kotlinx.coroutines.delay
+import kotlinx.coroutines.awaitCancellation
 import kotlinx.coroutines.test.runTest
 import org.junit.Before
 import org.junit.Rule
@@ -34,7 +34,7 @@ class ProductListViewModelTest {
     @Before
     fun setUp() {
         mockCurrencyFormatter.stub {
-            on { format(any(), any()) } doReturn FAKE_PRICE
+            on { format(any(), any(), any()) } doReturn FAKE_PRICE
         }
     }
 
@@ -43,8 +43,7 @@ class ProductListViewModelTest {
         mockGetProductsUseCase.stub {
             onBlocking { getProducts() } doSuspendableAnswer {
                 // Delay the call to get products to ensure loading state has time to assert
-                delay(500)
-                emptyList()
+                awaitCancellation()
             }
         }
         assert(viewModel.uiState.value == ProductListUiState.Loading)

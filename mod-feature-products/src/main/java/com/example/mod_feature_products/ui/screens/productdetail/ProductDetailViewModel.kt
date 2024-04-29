@@ -59,7 +59,7 @@ class ProductDetailViewModel @Inject constructor(
                         title = product.title,
                         primaryLabel = product.labels?.firstOrNull(),
                         colour = product.colour,
-                        price = currencyFormatter.format(product.price),
+                        price = currencyFormatter.format(product.price, maximumFractionDigits = 0),
                         featuredMediaUrl = product.featuredMedia.src,
                     )
                 _uiState.update {
